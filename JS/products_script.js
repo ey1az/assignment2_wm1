@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', initializePage);
 
 let productsGiven = [];
+let currentPage = 1;
+const itemsPerPage = 10;
 
 const productListElement = document.getElementById('list-of-products');
+const paginationElement = document.getElementById('pagination');
 
 function initializePage() {
     fetchData()
@@ -23,24 +26,31 @@ function initializePage() {
     });
 }
 
-function fetchData() {
-    return fetch('https://dummyjson.com/products?limit=100')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Problems with the network response!');
-            }
-            return response.json();
-        })
-        .then(data => data.products)
-        .catch(error => {
-            console.error('Fetching data error:', error.message);
-            throw error;
-        });
+async function fetchData() {
+    try {
+        const response = await fetch('https://dummyjson.com/products?limit=100');
+        if (!response.ok) {
+            throw new Error('Problems with the network response!');
+        }
+        const data = await response.json();
+        return data.products;
+    } catch (error) {
+        console.error('Fetching data error:', error.message);
+        throw error;
+    }
 }
 
 function displayProductList(filteredProducts) {
+    const totalProducts = filteredProducts.length;
+    const totalPages = Math.ceil(totalProducts / itemsPerPage);
+
+    const begin = (page - 1) * itemsPerPage;
+    const end = begin + itemsPerPage;
+
+    const paginProducts = filteredProducts.slice(begin, end);
+    
     productListElement.innerHTML = '';
-    filteredProducts.forEach(product => {
+    paginProducts.forEach(product => {
         const prodHTML = `
             <div class="card">
                 <h1 class="title">${product.title}</h1>
@@ -55,5 +65,14 @@ function displayProductList(filteredProducts) {
 
         productListElement.innerHTML += prodHTML;
     });
+    displayPagination(totalPages);
 }
 
+function displayPagination(totalPages) {
+    paginationElement.innerHTML = '';
+    for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.classList.add('pagination-button');
+        button.addEventListener('click', () => displayProductList(i));
+    }
+}
