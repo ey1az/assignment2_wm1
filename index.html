@@ -5,10 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product List</title>
-  <link rel="stylesheet" href="../CSS/products_style.css">
+  <link rel="stylesheet" href="../CSS/products_style.css"> 
 </head>
 
 <body> 
+  <div id="search-cont">
+    <label for="search-input">Search:</label>
+    <input type="text" id="search-input" placeholder="Enter title or description">
+  </div>
+  <div id="category-cont">
+    <label for="category-select">Category:</label>
+    <select id="category-select"></select>
+  </div>
   <div id="list-of-products"></div>
   <div id="pagination"></div>
   <script src="../JS/products_script.js"></script>
