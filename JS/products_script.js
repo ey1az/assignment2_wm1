@@ -130,6 +130,4 @@ function updateCategoryOptions() {
 
 function showProductDetails(productId) {
     window.location.href = `products_details.html?id=${productId}`;
-    searchInput.value = '';
-    categorySelect.value = 'all';
 }
