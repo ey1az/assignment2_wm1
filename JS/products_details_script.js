@@ -18,4 +18,36 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }    
 
+    const displayProductDetails = (product) => {
+        const productDetailsHTML = `
+            <div class="container">
+                <div class="details-of-products">
+                    <h1>${product.title}</h1>
+                    <img src="${product.thumbnail}" alt="${product.title}">
+                    <p>Description: ${product.description}</p>
+                    <p id="price">Price: $${product.price}</p>
+                    <p id="discount">Discount: ${product.discountPercentage}% off</p>
+                    <p>Rating: ${product.rating}</p>
+                    <p>Stock: ${product.stock}</p>
+                    <p>Brand: ${product.brand}</p>
+                    <p>Category: ${product.category}</p>
+                    <hr>
+                    <p id="gallery_word">Gallery</p>
+                    <div id="images-of-products"></div>
+                    <button class="button" onclick="goBack()">Back to Home Page</button>
+                </div>
+            </div>
+        `;
+
+        productDetailsElement.innerHTML = productDetailsHTML;
+
+        const productImagesElement = document.getElementById('images-of-products');
+        product.images.forEach(image => {
+            const imageElement = document.createElement('img');
+            imageElement.src = image;
+            imageElement.alt = product.title;
+            imageElement.style.width = '30%';
+            productImagesElement.appendChild(imageElement);
+        });
+    };
 })

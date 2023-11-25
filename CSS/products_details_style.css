@@ -4,3 +4,18 @@ body {
     background-image: url(https://img.freepik.com/free-vector/white-abstract-wallpaper_23-2148830026.jpg?w=1060&t=st=1700547669~exp=1700548269~hmac=f6d81859fd6c8fc60b79bcb12c597d970592f20c208dc9461794d45a3e54b40d);
 }
 
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#discount {
+    color: red;
+}
+
+#price {
+    color: rgb(81, 214, 81);
+}
