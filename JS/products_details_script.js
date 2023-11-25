@@ -64,5 +64,5 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function goBack() {
-    window.history.back();
+    window.location.href = `products_details.html?id=${productId}`;
 }
