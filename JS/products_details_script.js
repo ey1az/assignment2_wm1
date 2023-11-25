@@ -50,4 +50,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             productImagesElement.appendChild(imageElement);
         });
     };
-})
+
+    try {
+        productsGiven = await fetchData();
+        if (productsGiven.length > 0) {
+            displayProductDetails(productsGiven[productId - 1]);
+        } else {
+            productDetailsElement.innerHTML = 'No product data available!';
+        }
+    } catch (error) {
+        productDetailsElement.innerHTML = 'Fetching data error!';
+    }
+});
+
+function goBack() {
+    window.history.back();
+}

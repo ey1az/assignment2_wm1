@@ -133,4 +133,3 @@ function showProductDetails(productId) {
     searchInput.value = '';
     categorySelect.value = 'all';
 }
-
