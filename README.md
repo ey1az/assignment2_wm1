@@ -28,13 +28,13 @@ Make sure you have the following:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/ey1az/assignment2_wm1.git
+   git clone https://github.com/ey1az/product_catalog.git
    ```
 
 2. Change the directory:
 
    ```bash
-   cd assignment2_wm1
+   cd product_catalog
    ```
 
 3. Open the `index.html` file in your preferred web browser to launch the website.
